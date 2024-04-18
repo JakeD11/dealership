@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "apex4-production.s3.eu-west-1.amazonaws.com",
+        hostname: "d3f481j7u4x8pl.cloudfront.net",
       },
     ],
   },

@@ -1,21 +1,30 @@
 "use client";
-import CarCard from "@/components/carCard";
 import styled from "styled-components";
 import carData from "../public/data/cars.json";
-
-const GridContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
+import Header from "@/components/header";
+import FinanceBanner from "@/components/financeBanner";
+import CarDisplay from "@/components/carDisplay";
+import SidebarFilters from "@/components/sidebar";
 
 export default function Home() {
   const { data: cars } = carData;
   return (
-    <GridContainer>
-      {cars.map((car) => (
-        <CarCard key={car.advertisable_id} car={car} />
-      ))}
-    </GridContainer>
+    <>
+      <Header />
+      <FinanceBanner />
+      <Container>
+        <SidebarFilters />
+        <CarDisplay />
+      </Container>
+    </>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  margin: auto;
+`;
