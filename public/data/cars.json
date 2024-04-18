@@ -761,7 +761,7 @@
       "vehicle_source": "crewe-audi"
     },
     {
-      "advert_classification": "USED",
+      "advert_classification": "NEW",
       "advert_type": "VEHICLE",
       "advertisable_id": 1047,
       "optional_extras": [],
@@ -2371,7 +2371,7 @@
       "vehicle_source": "peugeot-chester"
     },
     {
-      "advert_classification": "USED",
+      "advert_classification": "NEW",
       "advert_type": "VEHICLE",
       "advertisable_id": 1067,
       "optional_extras": [],
@@ -3196,7 +3196,7 @@
       "vehicle_source": "crewe-vw"
     },
     {
-      "advert_classification": "USED",
+      "advert_classification": "NEW",
       "advert_type": "VEHICLE",
       "advertisable_id": 1029,
       "optional_extras": [],
