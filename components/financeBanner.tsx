@@ -58,6 +58,10 @@ const BannerContainer = styled.div`
   border-radius: 0 0 0 50px;
   background-color: #282338;
   height: 137px;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const FinanceText = styled.div`
