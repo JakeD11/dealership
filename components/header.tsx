@@ -40,6 +40,10 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   gap: 30px;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const NavLink = styled.a`
