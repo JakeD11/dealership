@@ -8,6 +8,17 @@ const CarCard = ({ car }) => {
   return (
     <>
       <CarCards>
+        <GalleryContainer>
+          {car.media_urls.map((image, index) => (
+            <SmallImage
+              key={index}
+              width={113}
+              height={84}
+              src={image.thumb}
+              alt={`${car.make} ${car.model}`}
+            />
+          ))}
+        </GalleryContainer>
         <ImageContainer>
           <CarImage
             width={333}
@@ -27,9 +38,10 @@ const CarCard = ({ car }) => {
         <DescriptionContainer>
           <CarDescription>
             {car.year} {car.make} {car.model}
+            <CarDerivative>{car.derivative}</CarDerivative>
           </CarDescription>
-
-          <CarDerivative>{car.derivative}</CarDerivative>
+        </DescriptionContainer>
+        <DescriptionContainer>
           <MonthlyPaymentText>
             £550.90 <Span>/mo (PCP)</Span>
           </MonthlyPaymentText>
@@ -41,6 +53,19 @@ const CarCard = ({ car }) => {
 };
 
 export default CarCard;
+
+const SmallImage = styled(Image)`
+  border-radius: 16px;
+`;
+const GalleryContainer = styled.div`
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  padding-top: 30px;
+  @media (min-width: 500px) {
+    display: none;
+  }
+`;
 
 const Span = styled.span`
   font-weight: 400;
@@ -84,7 +109,7 @@ const InfoTabs = styled.div`
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 `;
 const DescriptionContainer = styled.div`
-  padding: 10px;
+  padding: 10px 0 0 10px;
 `;
 const PaymentText = styled.div`
   color: #000000;
@@ -110,17 +135,26 @@ const CarDerivative = styled(CarDescription)`
 `;
 
 const CarCards = styled.div`
-  width: 333px;
-  height: 365px;
-  margin: 10px;
-  border-radius: 16px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  @media (min-width: 500px) {
+    width: 333px;
+    height: 365px;
+    margin: 10px;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  }
+  width: 100%;
+  margin: 0;
 `;
 
 const ImageContainer = styled.div`
+  display: none;
   width: 100%;
   height: 250px;
   position: relative;
+
+  @media (min-width: 500px) {
+    display: block;
+  }
 `;
 
 const CarImage = styled(Image)`

@@ -39,8 +39,11 @@ const GridContainer = styled.div`
 `;
 
 const CarDisplayContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
+  padding: 0;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
 `;

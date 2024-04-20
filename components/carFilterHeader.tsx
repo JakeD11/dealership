@@ -4,7 +4,9 @@ const CarFilterHeader = ({ count, setFilter }) => {
   return (
     <CarFilterWrapper>
       <Container>
-        <CountText>Showing {count} cars</CountText>
+        <CountText>
+          <ShowingSpan>Showing &nbsp;</ShowingSpan> {count} cars
+        </CountText>
         <ButtonGroup>
           <FilterButton onClick={() => setFilter("all")}>All</FilterButton>
           <FilterButton onClick={() => setFilter("used")}>Used</FilterButton>
@@ -38,10 +40,14 @@ background-color: #ffffff;
 `;
 
 const CountText = Styled.p`
-    font-size: 18px;
+display: none;
+ font-size: 18px;
     margin: 0;
     color: #000000;
     font-weight: 700;
+@media (min-width: 500px) {
+    display: flex;
+}
 `;
 
 const ButtonGroup = Styled.div`
@@ -71,8 +77,11 @@ outline: none;
 `;
 
 const DropdownSection = Styled.div`
+display: none;
+@media (min-width: 768px) {
   display: flex;
   gap: 20px;
+}
 `;
 
 const Dropdown = Styled.select`
@@ -83,4 +92,11 @@ const Dropdown = Styled.select`
   border: none;
   color: #000000;
     padding: 0 10px;
+`;
+
+const ShowingSpan = Styled.span`
+display: none;
+@media (min-width: 768px) {
+  display: block;
+}
 `;

@@ -21,10 +21,13 @@ export default function Home() {
 }
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  padding: 20px;
-  width: 100%;
-  margin: auto;
+  padding: 10px;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    margin: auto;
+  }
 `;
