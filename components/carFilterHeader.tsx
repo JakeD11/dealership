@@ -1,17 +1,23 @@
 import Styled from "styled-components";
 
-const CarFilterHeader = ({ count, setFilter }) => {
+const CarFilterHeader = ({
+  count,
+  setFilter,
+}: {
+  count: number;
+  setFilter: (filter: string) => void;
+}) => {
   return (
     <CarFilterWrapper>
       <Container>
         <CountText>
-          <ShowingSpan>Showing &nbsp;</ShowingSpan> {count} cars
+          <ShowingSpan>Showing </ShowingSpan> {count} cars
         </CountText>
         <ButtonGroup>
           <FilterButton onClick={() => setFilter("all")}>All</FilterButton>
           <FilterButton onClick={() => setFilter("used")}>Used</FilterButton>
           <FilterButton onClick={() => setFilter("new")}>New</FilterButton>
-          <FilterButton onClick={() => setFilter("used")}>Offer</FilterButton>
+          <FilterButton onClick={() => setFilter("used")}>Offers</FilterButton>
         </ButtonGroup>
       </Container>
       <DropdownSection>
@@ -29,14 +35,22 @@ const Container = Styled.div`
 display: flex;
 gap: 20px;
 align-items: center;
+
+@media (max-width: 500px) {
+    width: 100%;
+}
+
 `;
 
 const CarFilterWrapper = Styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 20px;
 background-color: #ffffff;
+@media (min-width: 500px) {
+padding: 20px;
+}
+
 `;
 
 const CountText = Styled.p`
@@ -47,21 +61,26 @@ display: none;
     font-weight: 700;
 @media (min-width: 500px) {
     display: flex;
+    gap: 5px;
 }
 `;
 
 const ButtonGroup = Styled.div`
     display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    @media (min-width: 500px) {
     gap: 10px;
+    width: initial;
+    }
 `;
 
 const FilterButton = Styled.button`
+border: none;
 padding: 8px 25px 8px 25px;
 height: 30px;
-background: #f8f8f8;
+background: #ffffff;
 color: #55595D;
-border: 1px solid #D1D6E0;
-border-radius: 12px;
 cursor: pointer;
 outline: none;
 &:active {
@@ -73,6 +92,13 @@ outline: none;
     color: #FFFFFF
 
 }
+@media (min-width: 500px) {
+  border: 1px solid #D1D6E0;
+  border-radius: 12px;
+  background: #f8f8f8;
+}
+
+
 
 `;
 

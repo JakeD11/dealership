@@ -48,6 +48,10 @@ const HeaderContainer = styled.div`
   align-items: center;
   padding: 10px;
   background-color: #f8f8f8;
+  @media (max-width: 500px) {
+    background-color: #ffffff;
+    border-bottom: 1px solid #d1d6e0;
+  }
 `;
 
 const Logo = styled.h1`

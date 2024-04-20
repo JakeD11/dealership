@@ -1,8 +1,8 @@
-export const capitalizeFirstLetter = (string) => {
+export const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-export const formatMiles = (num) => {
+export const formatMiles = (num: number) => {
   if (num >= 100000) {
     return (num / 100000).toFixed(2) + "k";
   }
@@ -15,4 +15,12 @@ export const formatMiles = (num) => {
   }
 
   return num.toString();
+};
+
+export const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP",
+    maximumFractionDigits: 0,
+  }).format(value);
 };

@@ -1,53 +1,14 @@
 import styled from "styled-components";
-import FilterGroup from "./filterGroup";
-
+import Image from "next/image";
 const SidebarFilters = () => {
   return (
     <Sidebar>
-      <TitleWrapper>
-        <Title>Filters</Title>
-        <ResetButton>Reset</ResetButton>
-      </TitleWrapper>
-      <FilterGroup title="Budget">
-        <Label>
-          Min Price
-          <Input type="number" placeholder="Min price" />
-        </Label>
-        <Label>
-          Max Price
-          <Input type="number" placeholder="Max price" />
-        </Label>
-      </FilterGroup>
-      <FilterGroup title="Specifications">
-        <FilterGroup title="Fuel type">
-          <Label>
-            Petrol
-            <Input type="checkbox" />
-          </Label>
-          <Label>
-            Diesel
-            <Input type="checkbox" />
-          </Label>
-          <Label>
-            Electric
-            <Input type="checkbox" />
-          </Label>
-        </FilterGroup>
-        <FilterGroup title="Body Type">
-          <Label>
-            Petrol
-            <Input type="checkbox" />
-          </Label>
-          <Label>
-            Diesel
-            <Input type="checkbox" />
-          </Label>
-          <Label>
-            Electric
-            <Input type="checkbox" />
-          </Label>
-        </FilterGroup>
-      </FilterGroup>
+      <Image
+        width={298}
+        height={1031}
+        src="/images/sidebar.png"
+        alt="sidebar"
+      />
     </Sidebar>
   );
 };
@@ -56,10 +17,8 @@ export default SidebarFilters;
 
 const Sidebar = styled.div`
   display: none;
-  min-width: 298px;
   color: #000000;
   left: 0;
-  background-color: #f8f8f8;
   padding: 20px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
