@@ -55,6 +55,7 @@ const SidebarFilters = () => {
 export default SidebarFilters;
 
 const Sidebar = styled.div`
+  display: none;
   min-width: 298px;
   color: #000000;
   left: 0;
@@ -62,8 +63,8 @@ const Sidebar = styled.div`
   padding: 20px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
-  @media (max-width: 1200px) {
-    display: none;
+  @media (min-width: 1200px) {
+    display: block;
   }
 `;
 

@@ -51,7 +51,7 @@ const FinanceBanner = () => {
 export default FinanceBanner;
 
 const BannerContainer = styled.div`
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -59,8 +59,8 @@ const BannerContainer = styled.div`
   background-color: #282338;
   height: 137px;
 
-  @media (max-width: 1200px) {
-    display: none;
+  @media (min-width: 1200px) {
+    display: flex;
   }
 `;
 

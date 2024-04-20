@@ -3,7 +3,9 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <HeaderContainer>
-      <Logo>Car Dealership UK</Logo>
+      <Logo>
+        CarDealer <UKSpan>UK</UKSpan>
+      </Logo>
       <Nav>
         <NavLink href="#">Home</NavLink>
         <NavLink href="#">Our cars</NavLink>
@@ -16,6 +18,8 @@ const Header = () => {
       <ButtonSection>
         <Button>Call us</Button>
         <Button>Email us</Button>
+        <ContactButton>Contact</ContactButton>
+        <MenuText>Menu</MenuText>
       </ButtonSection>
     </HeaderContainer>
   );
@@ -23,6 +27,21 @@ const Header = () => {
 
 export default Header;
 
+const UKSpan = styled.span`
+  color: #7572ff;
+  font-size: 12px;
+`;
+
+const MenuText = styled.p`
+  display: flex;
+  font-size: 16px;
+  color: #000000;
+  cursor: pointer;
+  align-items: center;
+  @media (min-width: 1200px) {
+    display: none;
+  }
+`;
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -56,6 +75,7 @@ const ButtonSection = styled.div`
   gap: 10px;
 `;
 const Button = styled.button`
+  display: none;
   padding: 11px 25px 12px 25px;
   border: none;
   border-radius: 16px;
@@ -65,4 +85,14 @@ const Button = styled.button`
   height: 40px;
   font-size: 16px;
   font-weight: 600;
+  @media (min-width: 768px) {
+    display: block;
+  }
+`;
+
+const ContactButton = styled(Button)`
+  display: block;
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
