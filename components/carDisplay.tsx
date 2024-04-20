@@ -35,7 +35,7 @@ export default CarDisplay;
 const GridContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  columns: 3;
+  justify-content: center;
 `;
 
 const CarDisplayContainer = styled.div`

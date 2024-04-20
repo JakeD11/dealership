@@ -1,23 +1,34 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { capitalizeFirstLetter, formatMiles } from "@/utils/sharedUtils";
+import {
+  capitalizeFirstLetter,
+  formatCurrency,
+  formatMiles,
+} from "@/utils/sharedUtils";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { Key } from "react";
 
-const CarCard = ({ car }) => {
+const CarCard = ({ car }: { car: any }) => {
   const price = parseInt(car.price);
 
   return (
     <>
       <CarCards>
         <GalleryContainer>
-          {car.media_urls.map((image, index) => (
-            <SmallImage
-              key={index}
-              width={113}
-              height={84}
-              src={image.thumb}
-              alt={`${car.make} ${car.model}`}
-            />
-          ))}
+          {car.media_urls.map(
+            (
+              image: { thumb: string | StaticImport },
+              index: Key | null | undefined
+            ) => (
+              <SmallImage
+                key={index}
+                width={113}
+                height={84}
+                src={image.thumb}
+                alt={`${car.make} ${car.model}`}
+              />
+            )
+          )}
         </GalleryContainer>
         <ImageContainer>
           <CarImage
@@ -40,12 +51,32 @@ const CarCard = ({ car }) => {
             {car.year} {car.make} {car.model}
             <CarDerivative>{car.derivative}</CarDerivative>
           </CarDescription>
+          <ButtonGroup>
+            <MobileListingType>
+              {capitalizeFirstLetter(car.advert_classification)}
+            </MobileListingType>
+            <StarImage
+              width={22}
+              height={22}
+              src="/images/star.png"
+              alt="star"
+            />
+          </ButtonGroup>
         </DescriptionContainer>
         <DescriptionContainer>
-          <MonthlyPaymentText>
-            £550.90 <Span>/mo (PCP)</Span>
-          </MonthlyPaymentText>
-          <PaymentText>£{price} Calculate</PaymentText>
+          <MobileInfoWrapper>
+            <InfoTabs>{formatMiles(car.odometer_value)} miles |</InfoTabs>
+            <InfoTabs>{car.body_type} </InfoTabs>
+            <InfoTabs>{capitalizeFirstLetter(car.transmission)} </InfoTabs>
+          </MobileInfoWrapper>
+          <PaymentWrapper>
+            <MonthlyPaymentText>
+              £550.90 <Span>/mo (PCP)</Span>
+            </MonthlyPaymentText>
+            <PaymentText>
+              {formatCurrency(price)} <CalculateSpan>Calculate</CalculateSpan>
+            </PaymentText>
+          </PaymentWrapper>
         </DescriptionContainer>
       </CarCards>
     </>
@@ -54,6 +85,26 @@ const CarCard = ({ car }) => {
 
 export default CarCard;
 
+const ButtonGroup = styled.div`
+  display: flex;
+  align-items: flex-start;
+  @media (min-width: 500px) {
+    gap: 20px;
+  }
+`;
+const StarImage = styled(Image)`
+  margin: 0 10px;
+`;
+const PaymentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const CalculateSpan = styled.span`
+  @media (min-width: 500px) {
+    display: block;
+  }
+  display: none;
+`;
 const SmallImage = styled(Image)`
   border-radius: 16px;
 `;
@@ -61,7 +112,7 @@ const GalleryContainer = styled.div`
   display: flex;
   gap: 5px;
   overflow-x: auto;
-  padding-top: 30px;
+  padding: 30px 0 10px 0;
   @media (min-width: 500px) {
     display: none;
   }
@@ -79,6 +130,17 @@ const InfoWrapper = styled.div`
   display: flex;
   gap: 5px;
 `;
+const MobileInfoWrapper = styled(InfoWrapper)`
+  position: initial;
+  max-width: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  bottom: 0;
+  left: 0;
+  @media (min-width: 500px) {
+    display: none;
+  }
+`;
 
 const ListingType = styled.div`
   position: absolute;
@@ -93,34 +155,65 @@ const ListingType = styled.div`
   border-radius: 8px;
   font-family: "Overpass", sans-serif;
 `;
+const MobileListingType = styled(ListingType)`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: right;
+
+  width: 46px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  font-size: 12px;
+  padding: 0;
+  @media (min-width: 500px) {
+    display: none;
+  }
+`;
 const InfoTabs = styled.div`
   display: flex;
-  gap: 20px;
   align-items: center;
-  color: #ffffff;
-  background-color: #3f3a50;
-  padding: 1px 10px;
-  border: 1px solid #ffffff33;
-  border-radius: 8px;
   font-weight: 400;
   font-size: 12px;
   text-transform: capitalize;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  @media (min-width: 500px) {
+    gap: 20px;
+    background-color: #3f3a50;
+    padding: 1px 10px;
+    border: 1px solid #ffffff33;
+    border-radius: 8px;
+    color: #ffffff;
+  }
 `;
 const DescriptionContainer = styled.div`
-  padding: 10px 0 0 10px;
+  padding: 5px 0 0 10px;
+  display: flex;
+  justify-content: space-between;
 `;
 const PaymentText = styled.div`
   color: #000000;
+  display: flex;
+  gap: 5px;
   font-size: 12px;
   font-weight: 400;
-  padding-top: 5px;
+  @media (min-width: 500px) {
+    padding-top: 5px;
+  }
 `;
 
 const MonthlyPaymentText = styled(PaymentText)`
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
   font-weight: 700;
+  @media (min-width: 500px) {
+    font-size: 18px;
+    font-weight: 700;
+  }
 `;
 
 const CarDescription = styled.div`

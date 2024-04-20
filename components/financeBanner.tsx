@@ -91,4 +91,5 @@ const Dropdown = styled.select`
   border-radius: 16px;
   background-color: #3f3a50;
   border: none;
+  color: #ffffff;
 `;
